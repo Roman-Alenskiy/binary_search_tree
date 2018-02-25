@@ -4,7 +4,7 @@ This is implementation of Binary search tree on Ruby
 
 ## Notes:
 
-### Clasess:
+### Classes:
 
 + BinarySearchTree class, which represents BST.
 + Node class, containing a @value, @parent, @left_child, @right_child attrs.
