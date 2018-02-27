@@ -102,6 +102,32 @@ class BinarySearchTree < Node
         return nil
     end
 
+    def depth_first_search(value)
+        stack = [@root]
+        until stack.empty? do
+            node = stack.pop # #pop delete last array element, then return this deleted element
+            if node.value == value
+                puts
+                node_to_s(node)
+                return node
+            else
+                stack << node.right_child unless node.right_child.nil?
+                stack << node.left_child unless node.left_child.nil?  
+            end              
+        end
+        puts "\nnil"
+        return nil
+    end
+
+    def dfs_rec(value, current_root = @root)
+        return if current_root.nil?
+
+        node_to_s(current_root) if current_root.value == value
+
+        dfs_rec(value, current_root.left_child)
+        dfs_rec(value, current_root.right_child)
+    end
+
     def show_tree
         queue = [@root]
         until queue.empty? do
@@ -119,4 +145,7 @@ tree.data = [2, 1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree.build_tree
 tree.show_tree
 tree.breadth_first_search(3)
+tree.depth_first_search(3)
+puts
+tree.dfs_rec(3)
 
