@@ -87,17 +87,15 @@ class BinarySearchTree < Node
 
     def breadth_first_search(value)
         queue = [@root]
-        i = 0
         until queue.empty? do # !!!!!#each iterator dont work correctly!!!!!!!
-            if queue[i].value == value
+            if queue.first.value == value
                 puts 
-                node_to_s(queue[i])
-                return queue[i]
+                node_to_s(queue.first)
+                return queue.first
             else
-                queue << queue[i].left_child unless queue[i].left_child.nil?
-                queue << queue[i].right_child unless queue[i].right_child.nil?
+                queue << queue.first.left_child unless queue.first.left_child.nil?
+                queue << queue.first.right_child unless queue.first.right_child.nil?
                 queue.shift
-                i = 0
             end
         end
         puts "\nnil"
@@ -106,13 +104,11 @@ class BinarySearchTree < Node
 
     def show_tree
         queue = [@root]
-        i = 0
         until queue.empty? do
-            node_to_s(queue[i])
-            queue << queue[i].left_child unless queue[i].left_child.nil?
-            queue << queue[i].right_child unless queue[i].right_child.nil?
+            node_to_s(queue.first)
+            queue << queue.first.left_child unless queue.first.left_child.nil?
+            queue << queue.first.right_child unless queue.first.right_child.nil?
             queue.shift
-            i = 0
         end
     end
 
