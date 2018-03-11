@@ -1,4 +1,4 @@
-load 'Node'
+load 'Node.rb'
 
 class BinarySearchTree < Node
     attr_accessor :data, :root
